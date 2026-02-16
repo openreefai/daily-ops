@@ -2,7 +2,7 @@
   "reef": "1.0",
   "type": "shoal",
   "name": "daily-ops",
-  "version": "0.3.1",
+  "version": "0.4.0",
   "description": "Daily Operations Squad: a five-agent team that handles the operational layer of running a business so you only interact with the Chief of Staff.",
   "author": "OpenReef",
   "license": "MIT",
@@ -24,10 +24,10 @@
       "description": "Your company or business name",
       "required": true
     },
-    "BRIEFING_CHANNEL": {
+    "INTERACTION_CHANNEL": {
       "type": "string",
-      "description": "Channel for daily briefing delivery (slack, telegram, or whatsapp)",
-      "default": "slack"
+      "description": "Primary contact channel in <type>:<scope> form (examples: slack:#ops, telegram:12345, teams:ops-room)",
+      "required": true
     },
     "WRITING_VOICE": {
       "type": "string",
@@ -119,11 +119,7 @@
 
   "bindings": [
     {
-      "channel": "slack",
-      "agent": "chief-of-staff"
-    },
-    {
-      "channel": "telegram",
+      "channel": "{{INTERACTION_CHANNEL}}",
       "agent": "chief-of-staff"
     }
   ],

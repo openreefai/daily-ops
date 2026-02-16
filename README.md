@@ -29,7 +29,7 @@ All output is reviewed by a human before sending. No agent publishes or sends an
 |----------|------|---------|----------|-------------|
 | `USER_NAME` | string | - | yes | Your name, used in drafts and briefings |
 | `BUSINESS_NAME` | string | - | yes | Your company or business name |
-| `BRIEFING_CHANNEL` | string | `slack` | no | Channel for daily briefing delivery (slack, telegram, or whatsapp) |
+| `INTERACTION_CHANNEL` | string | - | yes | Primary contact channel in `<type>:<scope>` form (e.g. `slack:#ops`, `telegram:12345`, `teams:ops-room`) |
 | `WRITING_VOICE` | string | `Direct, conversational, no jargon. Writes like a smart person talking to another smart person.` | no | Description of your writing voice/tone for the Content Writer |
 | `PRIORITY_DOMAINS` | string | `""` | no | Comma-separated email domains that should always be flagged as important (e.g. investor.com,bigclient.co) |
 
@@ -44,7 +44,7 @@ cp .env.example .env
 reef install .
 ```
 
-Once installed, talk to the Chief of Staff via Slack or Telegram. Everything routes through that single point of contact.
+Once installed, talk to the Chief of Staff via your configured `INTERACTION_CHANNEL`. Everything routes through that single point of contact.
 
 ## Agents
 
@@ -96,7 +96,7 @@ inbox-manager ⇄ chief-of-staff → research-analyst
 | content-writer | chief-of-staff |
 | daily-briefing | chief-of-staff |
 
-Chief of Staff is the hub. All specialist agents communicate exclusively through Chief of Staff. No direct communication between specialists. The user interacts only with Chief of Staff via Slack or Telegram bindings.
+Chief of Staff is the hub. All specialist agents communicate exclusively through Chief of Staff. No direct communication between specialists. The user interacts only with Chief of Staff via the configured `INTERACTION_CHANNEL` binding.
 
 ## Cron Schedule
 
@@ -122,7 +122,7 @@ All schedules use `America/New_York` timezone. Adjust the `timezone` field in `r
 
 ### Research Loop
 
-1. You ask the Chief of Staff a research question (via Slack or Telegram)
+1. You ask the Chief of Staff a research question (via your configured channel)
 2. Chief of Staff delegates to the Research Analyst with scope and context
 3. Research Analyst produces a structured brief: executive summary, key findings, sources, recommended actions
 4. Brief is returned to Chief of Staff, who presents it to you
@@ -139,16 +139,15 @@ All schedules use `America/New_York` timezone. Adjust the `timezone` field in `r
 1. At 7 AM ET, the Daily Briefing agent pulls the previous 24 hours of activity
 2. It compiles inputs from all four specialists: emails handled, research completed, content produced, tasks managed
 3. The result is a single structured briefing with a 3-line executive summary
-4. Delivered via your configured briefing channel (Slack, Telegram, or WhatsApp)
+4. Delivered via your configured `INTERACTION_CHANNEL`
 
 ## Channel Bindings
 
 | Channel | Agent |
 |---------|-------|
-| Slack | chief-of-staff |
-| Telegram | chief-of-staff |
+| `{{INTERACTION_CHANNEL}}` | chief-of-staff |
 
-Both channels route to the Chief of Staff. This is the only agent the user interacts with directly. All delegation and coordination happens behind the scenes.
+The binding is user-configurable via the `INTERACTION_CHANNEL` variable, which must be set in `<type>:<scope>` format (e.g. `slack:#ops`, `telegram:12345`, `teams:ops-room`). This single binding routes to the Chief of Staff, the only agent the user interacts with directly. All delegation and coordination happens behind the scenes.
 
 ## Teardown
 
