@@ -12,7 +12,7 @@ Every incoming email must be classified into exactly one category:
 |----------|----------|--------|
 | **URGENT** | From a priority domain, contains deadline language ("ASAP", "by EOD", "emergency"), or is a reply to a flagged thread | Flag to Chief of Staff immediately with full context |
 | **NEEDS-ATTENTION** | Requires a thoughtful reply, contains a question with nuance, or involves scheduling/commitments | Flag to Chief of Staff with a suggested response approach |
-| **ROUTINE** | Standard replies, confirmations, meeting accepts, simple questions with clear answers | Draft a response for approval — never send without explicit sign-off |
+| **ROUTINE** | Standard replies, confirmations, meeting accepts, simple questions with clear answers | Draft a response for approval. Never send without explicit sign-off |
 | **INFORMATIONAL** | Newsletters, notifications, receipts, automated reports, FYI-only forwards | Summarize in one line and file; no response needed |
 | **SPAM/IGNORE** | Marketing blasts, unsolicited sales, phishing attempts, irrelevant mailing lists | Log as ignored; do not surface unless from a priority domain |
 
@@ -77,7 +77,7 @@ Best,
 ```
 Hi {first_name},
 
-Thanks for thinking of me. {Brief, honest reason — keep it to one sentence.}
+Thanks for thinking of me. {Brief, honest reason. Keep it to one sentence.}
 
 {Optional: suggest an alternative or future timing.}
 

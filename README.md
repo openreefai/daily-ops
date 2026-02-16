@@ -2,7 +2,7 @@
 
 > Your operational layer, orchestrated.
 
-A hub-and-spoke formation for daily business operations. You talk only to the Chief of Staff — four specialist agents handle email triage, deep research, content writing, and daily synthesis behind the scenes. Install once, let it run indefinitely.
+A hub-and-spoke formation for daily business operations. You talk only to the Chief of Staff - four specialist agents handle email triage, deep research, content writing, and daily synthesis behind the scenes. Install once, let it run indefinitely.
 
 ## What It Does
 
@@ -18,7 +18,7 @@ All output is reviewed by a human before sending. No agent publishes or sends an
 ## Requirements
 
 - [OpenClaw](https://github.com/openclaw/openclaw) >= 0.5.0 installed and running
-- [OpenReef CLI](https://github.com/openreef/openreef) installed
+- [OpenReef CLI](https://github.com/openreefai/openreef) installed
 - Anthropic API key (for Chief of Staff, Research Analyst, Content Writer)
 - Google AI API key (for Inbox Manager, Daily Briefing)
 - Email access (IMAP or API) for the Inbox Manager
@@ -27,8 +27,8 @@ All output is reviewed by a human before sending. No agent publishes or sends an
 
 | Variable | Type | Default | Required | Description |
 |----------|------|---------|----------|-------------|
-| `USER_NAME` | string | — | yes | Your name, used in drafts and briefings |
-| `BUSINESS_NAME` | string | — | yes | Your company or business name |
+| `USER_NAME` | string | - | yes | Your name, used in drafts and briefings |
+| `BUSINESS_NAME` | string | - | yes | Your company or business name |
 | `BRIEFING_CHANNEL` | string | `slack` | no | Channel for daily briefing delivery (slack, telegram, or whatsapp) |
 | `WRITING_VOICE` | string | `Direct, conversational, no jargon. Writes like a smart person talking to another smart person.` | no | Description of your writing voice/tone for the Content Writer |
 | `PRIORITY_DOMAINS` | string | `""` | no | Comma-separated email domains that should always be flagged as important (e.g. investor.com,bigclient.co) |
@@ -38,12 +38,9 @@ All output is reviewed by a human before sending. No agent publishes or sends an
 ```bash
 # 1. Copy and fill in your environment variables
 cp .env.example .env
-# Edit .env — set USER_NAME and BUSINESS_NAME at minimum
+# Edit .env: set USER_NAME and BUSINESS_NAME at minimum
 
-# 2. Lock skill versions
-reef lock .
-
-# 3. Deploy the formation
+# 2. Deploy the formation
 reef install .
 ```
 
@@ -67,7 +64,7 @@ Monitors email on a 5-minute cycle. Categorizes every incoming message as urgent
 
 **Model:** `anthropic/claude-opus-4-6` | **Role:** Researcher
 
-On-demand deep research, triggered by the Chief of Staff. Produces structured briefs with an executive summary, key findings, sources, and recommended actions. No cron schedule — activated only when a research task is delegated.
+On-demand deep research, triggered by the Chief of Staff. Produces structured briefs with an executive summary, key findings, sources, and recommended actions. No cron schedule; activated only when a research task is delegated.
 
 ### Content Writer
 
@@ -99,7 +96,7 @@ inbox-manager ⇄ chief-of-staff → research-analyst
 | content-writer | chief-of-staff |
 | daily-briefing | chief-of-staff |
 
-Chief of Staff is the hub. All specialist agents communicate exclusively through Chief of Staff — no direct communication between specialists. The user interacts only with Chief of Staff via Slack or Telegram bindings.
+Chief of Staff is the hub. All specialist agents communicate exclusively through Chief of Staff. No direct communication between specialists. The user interacts only with Chief of Staff via Slack or Telegram bindings.
 
 ## Cron Schedule
 
@@ -159,7 +156,7 @@ Both channels route to the Chief of Staff. This is the only agent the user inter
 reef uninstall ops/daily-ops
 ```
 
-**WARNING:** `reef uninstall` destroys agent workspaces, including all `knowledge/dynamic/` contents — task boards, inbox summaries, research briefs, content drafts, and briefing history are permanently deleted.
+**WARNING:** `reef uninstall` destroys agent workspaces, including all `knowledge/dynamic/` contents. Task boards, inbox summaries, research briefs, content drafts, and briefing history are permanently deleted.
 
 Runtime data lives in OpenClaw workspaces, **not** in the source tree:
 

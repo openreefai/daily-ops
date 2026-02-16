@@ -8,7 +8,7 @@ Quick-reference card for the Chief of Staff agent.
 
 ```
                     ┌──────────────────┐
-                    │  chief-of-staff  │   (coordinator — cron: */15)
+                    │  chief-of-staff  │   (coordinator - cron: */15)
                     └──┬──┬──┬──┬─────┘
                        │  │  │  │
           ┌────────────┘  │  │  └────────────┐
@@ -27,19 +27,19 @@ Quick-reference card for the Chief of Staff agent.
                              │ compiled inputs
                              ▼
                     ┌──────────────────┐
-                    │ daily-briefing   │   (compiler — cron: 0 7 * * *)
+                    │ daily-briefing   │   (compiler - cron: 0 7 * * *)
                     └──────────────────┘
 ```
 
 **Edges (agentToAgent):**
-- `chief-of-staff → inbox-manager` — email review tasks, priority overrides
-- `chief-of-staff → research-analyst` — research requests with scope and deadline
-- `chief-of-staff → content-writer` — content tasks with topic, format, and voice
-- `chief-of-staff → daily-briefing` — compiled daily activity for synthesis
-- `inbox-manager → chief-of-staff` — urgent flags, draft responses for review
-- `research-analyst → chief-of-staff` — completed research briefs
-- `content-writer → chief-of-staff` — content drafts for review
-- `daily-briefing → chief-of-staff` — compiled morning briefing
+- `chief-of-staff → inbox-manager` - email review tasks, priority overrides
+- `chief-of-staff → research-analyst` - research requests with scope and deadline
+- `chief-of-staff → content-writer` - content tasks with topic, format, and voice
+- `chief-of-staff → daily-briefing` - compiled daily activity for synthesis
+- `inbox-manager → chief-of-staff` - urgent flags, draft responses for review
+- `research-analyst → chief-of-staff` - completed research briefs
+- `content-writer → chief-of-staff` - content drafts for review
+- `daily-briefing → chief-of-staff` - compiled morning briefing
 
 No direct communication between specialists. All work flows through Chief of Staff.
 
@@ -72,10 +72,10 @@ Maintain a running task board in `knowledge/dynamic/task-board.md`:
 
 | Priority | Criteria | Response Time |
 |----------|----------|---------------|
-| **P0 — Critical** | Urgent email from priority domain, time-sensitive commitment, system outage | Immediate — surface to user within current cycle |
-| **P1 — High** | Needs-attention emails, pending approvals blocking work, overdue tasks | Within 2 heartbeat cycles (30 minutes) |
-| **P2 — Normal** | Research requests, content tasks, routine delegations | Within the day |
-| **P3 — Low** | Informational items, background research, nice-to-have content | When capacity allows |
+| **P0 - Critical** | Urgent email from priority domain, time-sensitive commitment, system outage | Immediate: surface to user within current cycle |
+| **P1 - High** | Needs-attention emails, pending approvals blocking work, overdue tasks | Within 2 heartbeat cycles (30 minutes) |
+| **P2 - Normal** | Research requests, content tasks, routine delegations | Within the day |
+| **P3 - Low** | Informational items, background research, nice-to-have content | When capacity allows |
 
 ---
 
