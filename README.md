@@ -29,7 +29,7 @@ All output is reviewed by a human before sending. No agent publishes or sends an
 |----------|------|---------|----------|-------------|
 | `USER_NAME` | string | - | yes | Your name, used in drafts and briefings |
 | `BUSINESS_NAME` | string | - | yes | Your company or business name |
-| `INTERACTION_CHANNEL` | string | - | yes | Primary contact channel in `<type>:<scope>` form (e.g. `slack:#ops`, `telegram:12345`, `teams:ops-room`) |
+| `INTERACTION_CHANNEL` | string | - | yes | Channel token for the primary contact channel (e.g. `slack`, `telegram`, `discord`, `teams`) |
 | `WRITING_VOICE` | string | `Direct, conversational, no jargon. Writes like a smart person talking to another smart person.` | no | Description of your writing voice/tone for the Content Writer |
 | `PRIORITY_DOMAINS` | string | `""` | no | Comma-separated email domains that should always be flagged as important (e.g. investor.com,bigclient.co) |
 
@@ -147,7 +147,7 @@ All schedules use `America/New_York` timezone. Adjust the `timezone` field in `r
 |---------|-------|
 | `{{INTERACTION_CHANNEL}}` | chief-of-staff |
 
-The binding is user-configurable via the `INTERACTION_CHANNEL` variable, which must be set in `<type>:<scope>` format (e.g. `slack:#ops`, `telegram:12345`, `teams:ops-room`). This single binding routes to the Chief of Staff, the only agent the user interacts with directly. All delegation and coordination happens behind the scenes.
+The binding is user-configurable via the `INTERACTION_CHANNEL` variable, which is the channel token (e.g. `slack`, `telegram`, `discord`, `teams`). Optional peer targeting can be configured with `INTERACTION_PEER_KIND` and `INTERACTION_PEER_ID` variables. This single binding routes to the Chief of Staff, the only agent the user interacts with directly. All delegation and coordination happens behind the scenes.
 
 ## Teardown
 
