@@ -26,7 +26,7 @@
     },
     "INTERACTION_CHANNEL": {
       "type": "string",
-      "description": "Primary contact channel in <type>:<scope> form (examples: slack:#ops, telegram:12345, teams:ops-room)",
+      "description": "Channel token for the primary contact channel (examples: slack, telegram, discord, teams)",
       "required": true
     },
     "WRITING_VOICE": {
@@ -48,7 +48,7 @@
       "role": "coordinator",
       "model": "anthropic/claude-opus-4-6",
       "tools": {
-        "allow": ["web-search", "file-read", "file-write"]
+        "allow": ["web_search", "read", "write", "sessions_send"]
       },
       "sandbox": {
         "network": true,
@@ -61,7 +61,7 @@
       "role": "triage",
       "model": "google/gemini-3-flash-preview",
       "tools": {
-        "allow": ["web-search", "file-read", "file-write"]
+        "allow": ["web_search", "read", "write", "sessions_send"]
       },
       "sandbox": {
         "network": true,
@@ -74,7 +74,7 @@
       "role": "researcher",
       "model": "anthropic/claude-opus-4-6",
       "tools": {
-        "allow": ["web-search", "file-read", "file-write"]
+        "allow": ["web_search", "read", "write", "sessions_send"]
       },
       "sandbox": {
         "network": true,
@@ -87,7 +87,7 @@
       "role": "writer",
       "model": "anthropic/claude-opus-4-6",
       "tools": {
-        "allow": ["web-search", "file-read", "file-write"]
+        "allow": ["web_search", "read", "write", "sessions_send"]
       },
       "sandbox": {
         "network": true,
@@ -100,7 +100,7 @@
       "role": "compiler",
       "model": "google/gemini-3-flash-preview",
       "tools": {
-        "allow": ["file-read", "file-write"]
+        "allow": ["read", "write", "sessions_send"]
       },
       "sandbox": {
         "network": true,
@@ -119,7 +119,7 @@
 
   "bindings": [
     {
-      "channel": "{{INTERACTION_CHANNEL}}",
+      "match": { "channel": "{{INTERACTION_CHANNEL}}" },
       "agent": "chief-of-staff"
     }
   ],
