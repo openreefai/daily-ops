@@ -2,7 +2,7 @@
   "reef": "1.0",
   "type": "shoal",
   "name": "daily-ops",
-  "version": "0.5.1",
+  "version": "0.5.2",
   "description": "Daily Operations Squad: a five-agent team that handles the operational layer of running a business so you only interact with the Chief of Staff.",
   "author": "OpenReef",
   "license": "MIT",
@@ -47,6 +47,7 @@
       "description": "Single point of contact. Orchestrates all delegation, tracks tasks, synthesizes progress, and accumulates long-term context about priorities and preferences.",
       "role": "coordinator",
       "model": "anthropic/claude-opus-4-6",
+      "thinking": "medium",
       "tools": {
         "allow": ["web_search", "read", "write", "sessions_send"]
       },
@@ -73,6 +74,7 @@
       "description": "On-demand deep research. Produces structured briefs with executive summary, key findings, sources, and recommended actions.",
       "role": "researcher",
       "model": "anthropic/claude-opus-4-6",
+      "thinking": "high",
       "tools": {
         "allow": ["web_search", "read", "write", "sessions_send"]
       },
